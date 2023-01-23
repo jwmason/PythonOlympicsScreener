@@ -1,0 +1,207 @@
+from collections import namedtuple
+
+Vaulter = namedtuple('Vaulter', 'i_height s_height i_speed s_speed')
+
+
+def week_1():
+
+    height = input("Please enter the pole vaulter's height: \n")
+    max_speed = float(input("Please enter the pole vaulter's maximum running speed: \n"))
+    return height, max_speed
+    pass
+
+
+def week_2(height, maximum_speed):
+
+    standard_height = float(height) * 0.0254
+    standard_maximum_speed = maximum_speed * 0.44704
+    return standard_height, standard_maximum_speed
+    pass
+
+
+def week_3(i_height, s_height, i_speed, s_speed):
+
+    i_height = int(i_height)
+    vaulter_list = [[i_height, s_height], [i_speed, s_speed]]
+    vaulter_dict = {"i_height" : i_height, "s_height" : s_height, "i_speed" : i_speed, "s_speed" : s_speed}
+    vaulter_namedtuple = Vaulter(i_height, s_height, i_speed, s_speed)
+    return vaulter_list, vaulter_dict, vaulter_namedtuple
+    pass
+
+
+def week_4(vaulter):
+    """
+    Receives a vaulter's information and returns their estimated jump height
+
+    Arguments:
+    vaulter -- a list, dictionary, or namedtuple that contains a pole vaulter's information
+
+    Return values:
+    jump_height -- a float containing the approximate jump height in meters
+    """
+    if type(vaulter) is list:
+        vaulter_speed = vaulter[1][1]
+        vaulter_height = vaulter[0][1]
+    if type(vaulter) is dict:
+        vaulter_speed = vaulter.s_speed
+        vaulter_height = vaulter.s_height
+    else:
+        vaulter_speed = s_speed
+        vaulter_height = s_height
+    jump_height = (1/2) * (vaulter_speed)^2 / 9.8 + vaulter_height
+    return jump_height
+    pass
+
+
+def week_5(applicants):
+    """
+    Given a number of applicants, prompt the user until once for each applicant and adds the i_height and i_speed as a
+    2 value list to a scores list
+
+    Arguments:
+        applicants -- an int representing the number of applicants
+
+    Return Values:
+        scores -- a list of lists in the format [[i_height_1, i_speed_1],
+                                                 [i_height_2, i_speed_2],
+                                                 ...,
+                                                 [i_height_n, i_speed_n]]
+    """
+    pass
+
+
+def week_6(scores):
+    """
+    Builds a list of vaulter structured types given
+    a list of i_height and i_speeds in the format [[i_height_1, i_speed_1], [i_heieght_2, i_speed_2], ... ]
+
+    Arguments:
+        scores -- list of i_height and i_speeds in the format [[i_height_1, i_speed_1], [i_heieght_2, i_speed_2], ... ]
+
+    Return Value:
+        vaulters -- list of vaulters in format [[vaulter1_list, vaulter1_dict, vaulter1_namedtuple], [vaulter2_list ...]
+    """
+    pass
+
+
+def week_7(vaulters, cutoff):
+    """
+    Given a list of vaulter dictionaries,
+    calculates the jump heights and removes the vaulters who don't make the cutoff.
+
+    Arguments:
+        vaulters -- a list of vaulters, potentially of any data type
+        cutoff -- the minimum estimated jump_height needed for a vaulter to make the team
+
+    Return Values:
+        team_members -- a list of vaulter dictionaries who beat the jump_height cutoff
+    """
+    pass
+
+
+def week_8(vaulters):
+    """
+    Given a list of vaulter dictionaries, build a list of strings that reports their
+    i_height, i_speed, and jump_height in the following format:
+    "Applicant's height {}, applicant's vaulting speed: {}, applicant's estimated jump_height: {}"
+
+    Remember to use the IMPERIAL units and NOT the STANDARD units.
+
+    Arguments:
+        vaulters -- a list of dictionaries representing vaulters
+
+    Return values:
+        report -- a list of strings in the format:
+                       "Applicant's height {}, applicant's vaulting speed: {}, applicant's estimated jump_height: {}"
+
+    """
+    pass
+
+
+def week_9(vaulter_file, cutoff):
+    """
+    Creates a report list using a text file.
+
+    Arguments:
+        vaulter_file -- a file with each line in the format "i_height, i_speed\n"
+        cutoff -- the minimum estimated jump_height needed for a vaulter to make the team
+
+    Return values:
+        file_report -- a list of strings in the format:
+                       "Applicant's height {}, applicant's vaulting speed: {}, applicant's estimated jump_height: {}"
+    """
+    pass
+
+
+def week_10(report):
+    """
+    Given a report, sort it by the jump_height
+
+    Arguments:
+        report -- a list of strings reporting candidate statistics
+
+    Return values:
+        sorted_report -- a sorted list of strings reporting canidate statistics (a one line comprehension is fine)
+    """
+    pass
+
+
+if __name__ == "__main__":
+    # Here is a a suite of print statements to help you test your code
+    # I are the two recommended examples for basic testing: 
+    #     height 1, and speed 10; a patholigical example to test edge cases
+    #     height 72, speed 23; a realistic example of an olympic athelete
+    
+    ti_height, ti_speed = week_1()
+    print("Test week 1 ti_height:", ti_height)
+    print("Test week 1 ti_speed:", ti_speed)
+    print()
+
+    ts_height, ts_speed = week_2(ti_height, ti_speed)
+    print("Test week 2 ts_height:", ts_height)
+    print("Test week 2 ts_speed:", ts_speed)
+    print()
+
+    tv_list, tv_dict, tv_namedtuple = week_3(ti_height, ts_height, ti_speed, ts_speed)
+    print("Test week 3 tv_list:", tv_list)
+    print("Test week 3 tv_dict:", tv_dict)
+    print("Test week 3 tv_namedtuple:", tv_namedtuple)
+    print()
+
+    l_j_height = week_4(tv_list)
+    d_j_height = week_4(tv_dict)
+    n_j_height = week_4(tv_namedtuple)
+    print("Test week 4 l_j_height:", l_j_height) 
+    print("Test week 4 tv_dict:", tv_dict)
+    print("Test week 4 tv_namedtuple:", tv_namedtuple)
+    print()
+
+    applicant_num = int(input("Please enter the number of applicants you would like to test: \n"))
+    app_list = week_5(applicant_num)
+    for i, app in enumerate(app_list):
+        print(f"Testing week 5 applicant {i}: {app}")
+    print()
+
+    sc_list = week_6(app_list)
+    for j, appl in enumerate(sc_list):
+        print(f"testing week 6 number {j}: \n\tlist: {appl[0]}\n\tdict: {appl[1]}\n\tamedtuple: {appl[2]}")
+    print()
+
+    cutoff_test = int(input("Please enter a value to test cutoff for week 7: \n"))
+    test_team_members = week_7([sc[1] for sc in sc_list], cutoff_test)
+    print("Test week 7:", test_team_members)
+    print()
+
+    test_r = week_8(test_team_members)
+    for k, mem in enumerate(test_r):
+        print(f"Test week 8 member {k}: {mem}\n")
+    print()
+
+    test_f = week_9("vaulter_test_file.txt", cutoff_test)
+    print("Testing week 9:")
+    for f in test_f:
+        print('\t', f)
+    print()
+
+    test_s = week_10(test_f)
+    print("Test week 10:", test_s)
